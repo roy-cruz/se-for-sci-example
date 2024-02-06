@@ -20,15 +20,15 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-			- name: Check out repo
+      - name: Check out repo
         uses: actions/checkout@v4 # actions/checkout@v4 -> does checkout
-																	# can also be done by specifying branch name, not recommended
-																	# In this case, it will checkout the version we're pushing/pulling
-			- name: Set up python
-				uses: actions/setup-python@v4 # To set up python when action is triggered
+                                  # can also be done by specifying branch name, not recommended
+                                  # In this case, it will checkout the version we're pushing/pulling
+      - name: Set up python
+        uses: actions/setup-python@v4 # To set up python when action is triggered
         with:
           python-version: "3.11" # You need to specify the version when using this
       - name: Install package
-				run: python -m pip install .{test}
-			- name: Run tests
-				run: python -m pytest -v
+        run: python -m pip install .{test}
+      - name: Run tests
+        run: python -m pytest -v

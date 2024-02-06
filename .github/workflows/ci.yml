@@ -1,3 +1,5 @@
+name: Our CI
+
 on:
   push:
   pull_request:
@@ -11,3 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World"
+      - name: Some name
+        run: echo "Hello again"

@@ -20,7 +20,7 @@ jobs:
       # - run: echo ${my_var} # Using the defined env var in bash
       # - run: echo ${{ env.my_var }} # Also works this way
       # - run: echo "Hello world"
-       - run: echo ${{ steps.step1.outputs.my_var }} # This syntax can be used to get output from other steps
+      - run: echo ${{ steps.step1.outputs.my_var }} # This syntax can be used to get output from other steps
       - run: echo "Hello world"
 
 

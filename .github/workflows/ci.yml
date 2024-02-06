@@ -2,19 +2,13 @@ name: Our CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
       - other_branch
   workflow_dispatch:
-
-# jobs:
-#   hello:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - run: echo "Hello World"
-#       - name: Some name
-#         run: echo "Hello again"
 
 jobs:
   hello:
@@ -32,3 +26,6 @@ jobs:
         run: python -m pip install .[test]
       - name: Run tests
         run: python -m pytest -v
+  say_hello:
+		steps:
+			- run: echo "Hello there!"

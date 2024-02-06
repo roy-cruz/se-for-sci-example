@@ -15,9 +15,12 @@ jobs:
     # runs-on: ubuntu-latest
     runs-on: ${{ matrix.os }}
     strategy: 
-      matrix: # Allows us to run with different configurations without having to repeat ourselves
+      matrix: # Allows us to run with different configurations without having to repeat ourselves and write them all out
         os: [ubuntu-latest, windows-latest]
         python-version: ["3.9", "3.12"] # Variable I can use
+        include: # For macos, we only want to test a particular version of python in it. This is how.
+          - os: macos-latest
+            python-version: "3.11" 
     steps:
       - name: Check out repo
         uses: actions/checkout@v4 # actions/checkout@v4 -> does checkout

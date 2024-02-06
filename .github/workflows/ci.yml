@@ -15,9 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Following run action is how you set up env variable. (Weird syntax)
-      - run: echo "my_var=some-value" >> $GITHUB_ENV
-      - run: echo ${my_var} # Using the defined env var in bash
-      - run: echo ${{ env.my_var }} # Also works this way
+      - id: step1
+        run: echo "my_var=some-value" >> $GITHUB_ENV
+      # - run: echo "my_var=some-value" >> $GITHUB_ENV
+      # - run: echo ${my_var} # Using the defined env var in bash
+      # - run: echo ${{ env.my_var }} # Also works this way
+      # - run: echo "Hello world"
+       - run: echo ${{ steps.step1.outputs.my_var }} # This syntax can be used to get output from other steps
       - run: echo "Hello world"
 
 

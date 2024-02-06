@@ -11,8 +11,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  hello:
-    runs-on: ubuntu-latest
+  test:
+    # runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy: 
+      matrix: # Allows us to run with different configurations without having to repeat ourselves
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.9", "3.12"] # Variable I can use
     steps:
       - name: Check out repo
         uses: actions/checkout@v4 # actions/checkout@v4 -> does checkout
@@ -21,11 +26,9 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v4 # To set up python when action is triggered
         with:
-          python-version: "3.11" # You need to specify the version when using this
+          # python-version: "3.11" # You need to specify the version when using this
+          python-version: ${{ matrix.python-version }} # Special syntax  github uses to use variables defined
       - name: Install package
         run: python -m pip install .[test]
       - name: Run tests
         run: python -m pytest -v
-  say_hello:
-		steps:
-			- run: echo "Hello there!"

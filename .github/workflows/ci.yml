@@ -8,10 +8,16 @@ on:
       - other_branch
   workflow_dispatch:
 
+# jobs:
+#   hello:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Hello World"
+#       - name: Some name
+#         run: echo "Hello again"
+
 jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World"
-      - name: Some name
-        run: echo "Hello again"
+      - run: python -m pip install .{test}

@@ -14,6 +14,10 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
+      # Following run action is how you set up env variable. (Weird syntax)
+      - run: echo "my_var=some-value" >> $GITHUB_ENV
+      - run: echo ${my_var} # Using the defined env var in bash
+      - run: echo ${{ env.my_var }} # Also works this way
       - run: echo "Hello world"
 
 
